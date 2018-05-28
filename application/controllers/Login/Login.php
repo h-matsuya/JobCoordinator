@@ -53,7 +53,7 @@ class Login extends CI_Controller {
                 break;
             case self::LOGIN_SUCCESS:
                 // リダイレクト先を決定
-                $redirectUrl = 'mypage';
+                $redirectUrl = 'member/mypage';
                 if(!is_null($this->session->userdata('logged_in_back_url')) && !empty($this->session->userdata('logged_in_back_url'))){
                     $redirectUrl = $this->session->userdata('logged_in_back_url');
                     $this->session->unset_userdata('logged_in_back_url');

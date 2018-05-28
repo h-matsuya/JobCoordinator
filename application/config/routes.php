@@ -60,7 +60,7 @@ $route['login'] = 'Login/Login/index';
 $route['logout'] = 'Login/Logout/index';
 
 // Mypage
-$route['mypage'] = 'Member/Mypage/index';
+$route['member/mypage'] = 'Member/Mypage/index';
 
 // Entry
 $route['entry/input']    = 'Entry/Input/index';

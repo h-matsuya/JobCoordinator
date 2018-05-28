@@ -1,6 +1,4 @@
 function mail_management() {
-  //MailApp.sendEmail('reon1022@gmail.com', 'テスト', 'テスト本文');
-
   var start = 0;
   var count = 0;
   var max = 500;
@@ -8,7 +6,6 @@ function mail_management() {
 
   // 未読の受信メールを取得
   var threads = GmailApp.search("has:nouserlabels is:unread", start, max);
-//  var threads = GmailApp.search("has:nouserlabels is:read", start, max);
   // スレッド取得件数
   var thread_count = threads.length;
   // スレッドからメールを取得する→二次元配列で格納
@@ -54,8 +51,6 @@ function mail_management() {
 
     }
 
-//    Logger.log( valMsgs[0]["msgdata"][3]["all_data"] );
-
     // 取得したメール情報をPOST
     payload =
     {
@@ -66,12 +61,11 @@ function mail_management() {
     var options =
         {
           "method"  : "post",
-          "payload" : payload
+          "payload" : payload,
+          "muteHttpExceptions" : true
         };
 
-//    var response = UrlFetchApp.fetch( 'http://h-matsuya.sakura.ne.jp/JobCoordinator/mail/mail_scheduler.php', options);
+    var response = UrlFetchApp.fetch( 'http://h-matsuya.sakura.ne.jp/JobCoordinator/adjust', options);
+    Logger.log(response);
   }
-
-
-  Logger.log( response );
 }

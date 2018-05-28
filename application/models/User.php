@@ -1,18 +1,23 @@
 <?php
 class User extends CI_Model
 {
+    protected $tableName = 'USER';
+
     public function __construct()
     {
         parent::__construct();
         $this->load->database();
     }
 
+/************************* ↓SELECT↓ ****************************/
+    // 全ユーザーデータ取得
     public function get_all_user()
     {
-        $query = $this->db->get('USER');
+        $query = $this->db->get($this->tableName);
         return $query->result();
     }
 
+    // 単体ユーザーデータ取得(ログインIDから)
     public function get_once_user($loginId)
     {
         $resData = array();
@@ -22,7 +27,29 @@ class User extends CI_Model
                     'DEL_FLG'  => 0,
                 );
         $this->db->select('*');
-        $this->db->from('USER');
+        $this->db->from($this->tableName);
+        $this->db->where($where);
+        $query = $this->db->get();
+        $resDataTemp = $query->result('array');
+
+        if(!empty($resDataTemp)){
+            $resData = $resDataTemp[0];
+        }
+
+        return $resData;
+    }
+
+    // 単体ユーザーデータ取得(メールアドレスから)
+    public function get_once_user_by_mail($mail)
+    {
+        $resData = array();
+        $where = array(
+                    'MAIL' => $mail,
+                    'REG_STATUS >=' => 1,
+                    'DEL_FLG'  => 0,
+                );
+        $this->db->select('*');
+        $this->db->from($this->tableName);
         $this->db->where($where);
         $query = $this->db->get();
         $resDataTemp = $query->result('array');
@@ -43,7 +70,7 @@ class User extends CI_Model
                     'DEL_FLG'  => 0,
                 );
         $this->db->select('*');
-        $this->db->from('USER');
+        $this->db->from($this->tableName);
         $this->db->where($where);
         $query = $this->db->get();
         $resDataTemp = $query->result('array');
@@ -58,11 +85,13 @@ class User extends CI_Model
     public function get_max_user_id()
     {
         $this->db->select_max('ID');
-        $query = $this->db->get('USER');
+        $query = $this->db->get($this->tableName);
         $res = $query->result();
         return $res[0]->ID;
     }
-
+/************************* ↑SELECT↑ ****************************/
+/************************* ↓INSERT↓ ****************************/
+    // 会員データ登録
     public function insert_user_data($data)
     {
         $res = array();
@@ -94,12 +123,13 @@ class User extends CI_Model
             $this->db->set('CREATE_DATETIME', 'NOW()', FALSE);
             $this->db->set('UPDATE_DATETIME', 'NOW()', FALSE);
 
-            $res['res'] = $this->db->insert('USER', $insertData);
+            $res['res'] = $this->db->insert($this->tableName, $insertData);
             $res['insert_id'] = $this->db->insert_id();
         }
         return $res;
     }
-
+/************************* ↑INSERT↑ ****************************/
+/************************* ↓UPDATE↓ ****************************/
     // 会員本登録(フラグ更新)
     public function update_user_data($id)
     {
@@ -113,8 +143,11 @@ class User extends CI_Model
             $this->db->where('LOGIN_ID'  , $id);
             $this->db->where('REG_STATUS', '0');
             $this->db->where('DEL_FLG'   , '0');
-            $res['res'] = $this->db->update('USER', $updateData);
+            $res['res'] = $this->db->update($this->tableName, $updateData);
         }
         return $res;
     }
+/************************* ↑UPDATE↑ ****************************/
+/************************* ↓DELETE↓ ****************************/
+/************************* ↑DELETE↑ ****************************/
 }

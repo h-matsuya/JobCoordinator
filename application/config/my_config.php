@@ -11,6 +11,9 @@ $config['reg_user_subject_admin']     = 'JobCoordinator会員登録通知';
 
 $config['adjust_from_admin_mail'] = 'test.kate.jobcoordinator@gmail.com';
 $config['adjust_from_admin_name'] = 'JobCoordinator ケイト';
+$config['adjust_mail_domain']     = '@h-matsuya.sakura.ne.jp';
+$config['reply_mark'] = '>';
+$config['approval_url'] = 'http://h-matsuya.sakura.ne.jp/JobCoordinator/member/approval_schedule';
 
 $config['magic_count'] = $_SERVER['MAGIC_COUNT'];
 $config['magic_code']  = $_SERVER['MAGIC_CODE'];

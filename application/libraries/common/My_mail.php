@@ -11,7 +11,7 @@ class My_mail {
     }
 
     // メール送信
-    public function _my_sendmail($tempPath, $data, $from, $fromName, $to, $subject, $encode = 'UTF-8')
+    public function _my_sendmail($tempPath, $data, $from, $fromName, $to, $subject, $msgId, $encode = 'UTF-8')
     {
         $message = $this->CI->parser->parse($tempPath, $data, TRUE);
 
@@ -19,6 +19,7 @@ class My_mail {
         $this->CI->email->to($to);
         $this->CI->email->subject($subject);
         $this->CI->email->message($message);
+        if(!empty($msgId)) $this->CI->email->set_header('Message-Id', $msgId);
         return $this->CI->email->send();
     }
 
