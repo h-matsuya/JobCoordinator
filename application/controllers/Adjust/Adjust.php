@@ -36,6 +36,10 @@ class Adjust extends CI_Controller {
     {
         $res = true;
         $this->mailBaseInfo = json_decode($this->input->post('mail_info'));
+
+        var_dump($this->mailBaseInfo);
+        exit;
+
         if(empty($this->$mailBaseInfo)) $res = false;
         return $res;
     }
@@ -868,8 +872,7 @@ class Adjust extends CI_Controller {
                                 break;
                             default:
                                 break;
-
-
+                        }
 
                         break;
                     case 9:     // 新規登録促し処理
@@ -880,33 +883,8 @@ class Adjust extends CI_Controller {
                         break;
                 }
 
-
-
-
             }
         }
-
-
-
-
-
-
-/*
-        $mailData['name'] = 'test_duest';
-        $mailData['mail'] = 'reon1022@gmail.com';
-        $mailData['subject'] = 'test_subject';
-        $mailData['bot_name'] = 'test_master のアシスタント ケイト';
-        $this->resData = $this->calender_lib->_get_schedule();
-        $mailData['schedule_data'] = '';
-        foreach($this->resData as $data){
-            $mailData['schedule_data'] .= $data['start']. ':'. $data['summary']. '¥n';
-        }
-        // メール送信
-        $resMail = $this->adjust_lib->_user_sendMail($mailData);
-        $aaa = '000';
-        if(!$resMail) $aaa = '111';
-        var_dump($this->input->post('mail_info'));
-*/
         var_dump("success!!");
     }
 
