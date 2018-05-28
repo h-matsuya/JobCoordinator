@@ -190,7 +190,6 @@ class Calender_lib {
     }
 
     public function _update_schedule_to_google($calendarId, $event_id, $summary, $description, $start_datetime, $end_datetime, $time_zone){
-    {
         // Get the API client and construct the service object.
         $client = $this->getClient();
         $service = new Google_Service_Calendar($client);
