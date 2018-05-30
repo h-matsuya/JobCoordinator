@@ -36,7 +36,7 @@ class Adjust extends CI_Controller {
     {
         $res = true;
         $this->mailBaseInfo = json_decode($this->input->post('mail_info'));
-        if(empty($this->$mailBaseInfo)) $res = false;
+        if(empty($this->mailBaseInfo)) $res = false;
         return $res;
     }
 
