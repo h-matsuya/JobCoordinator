@@ -20,6 +20,7 @@ class User extends CI_Model
     // 単体ユーザーデータ取得(ログインIDから)
     public function get_once_user($loginId)
     {
+        $res = false;
         $resData = array();
         $where = array(
                     'LOGIN_ID' => $loginId,
@@ -33,10 +34,11 @@ class User extends CI_Model
         $resDataTemp = $query->result('array');
 
         if(!empty($resDataTemp)){
+            $res = true;
             $resData = $resDataTemp[0];
         }
 
-        return $resData;
+        return array($res, $resData);
     }
 
     // 単体ユーザーデータ取得(メールアドレスから)
