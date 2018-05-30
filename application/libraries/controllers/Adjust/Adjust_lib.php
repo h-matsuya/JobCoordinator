@@ -42,7 +42,7 @@ class Adjust_lib {
         $res_schedule_data = array();
 
         if(empty($in_reply_to)){
-            list($res_0, $emp_data) = $this->CI->modelUser->get_emp_info_by_email_only($p_from);
+            list($res_0, $emp_data) = $this->CI->modelUser->get_once_user_by_mail($p_from);
             if($res_0){
                 $res_owner_mail = $emp_data['MAIL'];
                 if(mb_strpos($p_to, $this->CI->config->item('adjust_from_admin_mail')) !== false){
