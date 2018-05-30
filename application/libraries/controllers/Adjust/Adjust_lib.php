@@ -19,7 +19,7 @@ class Adjust_lib {
     }
 
     // 指定文字列からMessage-IDとin-reply-toを取得
-    public function get_msg_id($all){
+    public function get_msg_id_by_mail($all){
         $res_msg = "";
         $res_reply = "";
         $all_array = explode("\n", $all);
