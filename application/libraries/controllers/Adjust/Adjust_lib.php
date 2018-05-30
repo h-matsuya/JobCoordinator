@@ -25,10 +25,10 @@ class Adjust_lib {
         $all_array = explode("\n", $all);
         foreach($all_array as $key => $value){
             if((mb_strpos($value, "Message-ID:") !== false) && (mb_strpos($value, "@") !== false)){
-                $res_msg = fix_mail_format(trim(mb_substr($value, mb_strpos($value, "Message-ID:") + mb_strlen("Message-ID:"))), "<", ">");
+                $res_msg = $this->fix_mail_format(trim(mb_substr($value, mb_strpos($value, "Message-ID:") + mb_strlen("Message-ID:"))), "<", ">");
             }
             if((mb_strpos($value, "In-Reply-To:") !== false) && (mb_strpos($value, "@") !== false)){
-                $res_reply = fix_mail_format(trim(mb_substr($value, mb_strpos($value, "In-Reply-To:") + mb_strlen("In-Reply-To:"))), "<", ">");
+                $res_reply = $this->fix_mail_format(trim(mb_substr($value, mb_strpos($value, "In-Reply-To:") + mb_strlen("In-Reply-To:"))), "<", ">");
             }
             if($res_msg !== "" && $res_reply !== "") break;
         }
