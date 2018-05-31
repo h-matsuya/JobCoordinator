@@ -57,6 +57,13 @@ class Adjust extends CI_Controller {
                 $plain_to = $this->adjust_lib->fix_mail_format($msg->to, "<", ">");
                 $plain_from = $this->adjust_lib->fix_mail_format($msg->from, "<", ">");
 
+                var_dump($msg->to);
+                var_dump($plain_to);
+                var_dump($msg->from);
+                var_dump($plain_from);
+                var_dump($in_reply_to);
+                exit;
+
                 // 処理モード取得
                 list($mode, $owner_mail, $schedule_data) = $this->adjust_lib->get_mail_mode($plain_to, $plain_from, $in_reply_to);
 
