@@ -44,6 +44,7 @@ class User extends CI_Model
     // 単体ユーザーデータ取得(メールアドレスから)
     public function get_once_user_by_mail($mail)
     {
+        $res = false;
         $resData = array();
         $where = array(
                     'MAIL' => $mail,
@@ -57,10 +58,11 @@ class User extends CI_Model
         $resDataTemp = $query->result('array');
 
         if(!empty($resDataTemp)){
+            $res = true;
             $resData = $resDataTemp[0];
         }
 
-        return $resData;
+        return array($res, $resData);
     }
 
     public function get_user_by_ukey($uKey)
