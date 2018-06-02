@@ -35,6 +35,9 @@ class Adjust extends CI_Controller {
     protected function _preprocess()
     {
         $res = true;
+        var_dump($this->input->post('mail_info'));
+        exit;
+        
         $this->mailBaseInfo = json_decode($this->input->post('mail_info'));
         if(empty($this->mailBaseInfo)) $res = false;
         return $res;
