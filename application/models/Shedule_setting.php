@@ -129,7 +129,8 @@ class Shedule_setting extends CI_Model
     public function set_new_schedule($schedule_data)
     {
         $res = array();
-        if(!empty($data)){
+        $insert_id = "";
+        if(!empty($schedule_data)){
             $insertData = array(
                             'OWNER_SEND_MSG_ID'  => (!empty($schedule_data['OWNER_SEND_MSG_ID']))? $schedule_data['OWNER_SEND_MSG_ID']:'',
                             'GUEST_SEND_MSG_ID'  => (!empty($schedule_data['GUEST_SEND_MSG_ID']))? $schedule_data['GUEST_SEND_MSG_ID']:'',
