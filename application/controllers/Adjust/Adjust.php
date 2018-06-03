@@ -57,7 +57,7 @@ class Adjust extends CI_Controller {
                 $plain_to = $this->adjust_lib->fix_mail_format($msg->to, "<", ">");
                 $plain_from = $this->adjust_lib->fix_mail_format($msg->from, "<", ">");
 
-                var_dump($header_from);
+                var_dump($msg->from_domain);
                 exit;
                 var_dump($msg->to);
                 var_dump($plain_to);
