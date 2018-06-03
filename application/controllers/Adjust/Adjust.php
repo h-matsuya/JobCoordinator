@@ -61,7 +61,7 @@ class Adjust extends CI_Controller {
                     $msg->from = $plain_from;
                 }
 
-                var_dump($msg->to);
+                var_dump($in_reply_to);
                 exit;
                 var_dump($msg->to);
                 var_dump($plain_to);
