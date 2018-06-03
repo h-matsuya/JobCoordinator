@@ -53,11 +53,11 @@ class Adjust extends CI_Controller {
                 }
 
                 // 該当メールの返信先(In-Reply-To)を取得
-                list($msg_id, $in_reply_to) = $this->adjust_lib->get_msg_id_by_mail($msg->all_data);
+                list($msg_id, $in_reply_to, $header_from) = $this->adjust_lib->get_msg_id_by_mail($msg->all_data);
                 $plain_to = $this->adjust_lib->fix_mail_format($msg->to, "<", ">");
                 $plain_from = $this->adjust_lib->fix_mail_format($msg->from, "<", ">");
 
-                var_dump($msg->all_data);
+                var_dump($header_from);
                 exit;
                 var_dump($msg->to);
                 var_dump($plain_to);

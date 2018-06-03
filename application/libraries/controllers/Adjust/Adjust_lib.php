@@ -18,21 +18,25 @@ class Adjust_lib {
         return $res_mail;
     }
 
-    // 指定文字列からMessage-IDとin-reply-toを取得
+    // 指定文字列からMessage-IDとin-reply-toとheader.fromを取得
     public function get_msg_id_by_mail($all){
-        $res_msg = "";
+        $res_msg   = "";
         $res_reply = "";
+        $res_from  = "";
+
         $all_array = explode("\n", $all);
         foreach($all_array as $key => $value){
-            if((mb_strpos($value, "Message-ID:") !== false) && (mb_strpos($value, "@") !== false)){
+            if(empty($res_msg) && (mb_strpos($value, "Message-ID:") !== false) && (mb_strpos($value, "@") !== false)){
                 $res_msg = $this->fix_mail_format(trim(mb_substr($value, mb_strpos($value, "Message-ID:") + mb_strlen("Message-ID:"))), "<", ">");
             }
-            if((mb_strpos($value, "In-Reply-To:") !== false) && (mb_strpos($value, "@") !== false)){
+            if(empty($res_reply) && (mb_strpos($value, "In-Reply-To:") !== false) && (mb_strpos($value, "@") !== false)){
                 $res_reply = $this->fix_mail_format(trim(mb_substr($value, mb_strpos($value, "In-Reply-To:") + mb_strlen("In-Reply-To:"))), "<", ">");
             }
-            if($res_msg !== "" && $res_reply !== "") break;
+            if(empty($res_from) && (mb_strpos($value, "header.from=") !== false)){
+                $res_from = trim(mb_substr($value, mb_strpos($value, "header.from=") + mb_strlen("header.from=")));
+            }
         }
-        return array($res_msg, $res_reply);
+        return array($res_msg, $res_reply, $res_from);
     }
 
     // スケジュール調整処理モード取得
