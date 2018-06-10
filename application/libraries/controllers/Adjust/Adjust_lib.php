@@ -495,7 +495,7 @@ class Adjust_lib {
         // MTG場所
         $temp_res_data["mtg_place"] = $this->get_mtg_base_data($emp_data['DEFAULT_MTG_PLACE_NAME'], $temp_res_data["mtg_place"], $schedule_data["MTG_PLACE"]);
         // MTG連絡先
-        $emp_tel = $emp_data['tel1']. $emp_data['tel2']. $emp_data['tel3'];
+        $emp_tel = $emp_data['TEL1']. $emp_data['TEL2']. $emp_data['TEL3'];
         $temp_res_data["mtg_tel_no"] = $this->get_mtg_base_data($emp_tel, $temp_res_data["mtg_tel_no"], $schedule_data["MTG_TEL_NO"]);
         // MTG_SKYPE_ID
         $temp_res_data["mtg_skype_id"] = $this->get_mtg_base_data($emp_data['SKYPE_ID'], $temp_res_data["mtg_skype_id"], $schedule_data["MTG_SKYPE_ID"]);
