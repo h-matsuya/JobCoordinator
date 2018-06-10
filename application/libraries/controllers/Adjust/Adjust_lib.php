@@ -485,22 +485,30 @@ class Adjust_lib {
 
         // 各種得情報をデフォルト値も用いて整理
         // 開始時間
-        $temp_res_data["start_datetime"] = $this->get_start_datetime($emp_data, $temp_res_data["start_datetime"], $schedule_data["START_DATETIME"]);
+        $schedule = (isset($schedule_data["START_DATETIME"]))? $schedule_data["START_DATETIME"]: "";
+        $temp_res_data["start_datetime"] = $this->get_start_datetime($emp_data, $temp_res_data["start_datetime"], $schedule);
         // 終了時間
-        $temp_res_data["end_datetime"] = $this->get_end_datetime($emp_data, $temp_res_data["end_datetime"], $schedule_data["END_DATETIME"]);
+        $schedule = (isset($schedule_data["END_DATETIME"]))? $schedule_data["END_DATETIME"]: "";
+        $temp_res_data["end_datetime"] = $this->get_end_datetime($emp_data, $temp_res_data["end_datetime"], $schedule);
         // ゲストメールアドレス
-        $temp_res_data["guest_mail"] = $this->get_guest_mail($to, $temp_res_data["guest_mail"], $schedule_data["GUEST_MAIL"]);
+        $schedule = (isset($schedule_data["GUEST_MAIL"]))? $schedule_data["GUEST_MAIL"]: "";
+        $temp_res_data["guest_mail"] = $this->get_guest_mail($to, $temp_res_data["guest_mail"], $schedule);
         // MTG形式
-        $temp_res_data["mtg_type"] = $this->get_mtg_base_data($emp_data['DEFAULT_MTG_TYPE_NAME'], $temp_res_data["mtg_type"], $schedule_data["MTG_TYPE"]);
+        $schedule = (isset($schedule_data["MTG_TYPE"]))? $schedule_data["MTG_TYPE"]: "";
+        $temp_res_data["mtg_type"] = $this->get_mtg_base_data($emp_data['DEFAULT_MTG_TYPE_NAME'], $temp_res_data["mtg_type"], $schedule);
         // MTG場所
-        $temp_res_data["mtg_place"] = $this->get_mtg_base_data($emp_data['DEFAULT_MTG_PLACE_NAME'], $temp_res_data["mtg_place"], $schedule_data["MTG_PLACE"]);
+        $schedule = (isset($schedule_data["MTG_PLACE"]))? $schedule_data["MTG_PLACE"]: "";
+        $temp_res_data["mtg_place"] = $this->get_mtg_base_data($emp_data['DEFAULT_MTG_PLACE_NAME'], $temp_res_data["mtg_place"], $schedule);
         // MTG連絡先
+        $schedule = (isset($schedule_data["MTG_TEL_NO"]))? $schedule_data["MTG_TEL_NO"]: "";
         $emp_tel = $emp_data['TEL1']. $emp_data['TEL2']. $emp_data['TEL3'];
-        $temp_res_data["mtg_tel_no"] = $this->get_mtg_base_data($emp_tel, $temp_res_data["mtg_tel_no"], $schedule_data["MTG_TEL_NO"]);
+        $temp_res_data["mtg_tel_no"] = $this->get_mtg_base_data($emp_tel, $temp_res_data["mtg_tel_no"], $schedule);
         // MTG_SKYPE_ID
-        $temp_res_data["mtg_skype_id"] = $this->get_mtg_base_data($emp_data['SKYPE_ID'], $temp_res_data["mtg_skype_id"], $schedule_data["MTG_SKYPE_ID"]);
+        $schedule = (isset($schedule_data["MTG_SKYPE_ID"]))? $schedule_data["MTG_SKYPE_ID"]: "";
+        $temp_res_data["mtg_skype_id"] = $this->get_mtg_base_data($emp_data['SKYPE_ID'], $temp_res_data["mtg_skype_id"], $schedule);
         // 所要時間
-        $temp_res_data["required"] = $this->get_required($emp_data, $temp_res_data, $schedule_data["REQUIRED"]);
+        $schedule = (isset($schedule_data["REQUIRED"]))? $schedule_data["REQUIRED"]: "";
+        $temp_res_data["required"] = $this->get_required($emp_data, $temp_res_data, $schedule);
 
         // 一時的に取得した各種入力データを基に各データの整合性をチェックし、正常であれば結果配列へ代入、異常な場合エラー処理
         list($res_check, $res_data, $res_error) = $this->get_result_owner_mail($temp_res_data);
