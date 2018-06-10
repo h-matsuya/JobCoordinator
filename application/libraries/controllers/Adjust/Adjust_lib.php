@@ -93,27 +93,48 @@ class Adjust_lib {
                 if(!empty($value)){
                     if((empty($temp_res_data["start_datetime"])) && (mb_strpos($value, "【開始日時】:") !== false)){
                         $temp_res_data["start_datetime"] = trim(mb_substr($value, mb_strpos($value, "【開始日時】:") + mb_strlen("【開始日時】:")));
+                    }else{
+                        $temp_res_data["start_datetime"] = "";
                     }
                     if((empty($temp_res_data["end_datetime"])) && (mb_strpos($value, "【終了日時】:") !== false)){
                         $temp_res_data["end_datetime"] = trim(mb_substr($value, mb_strpos($value, "【終了日時】:") + mb_strlen("【終了日時】:")));
+                    }else{
+                        $temp_res_data["end_datetime"] = "";
                     }
                     if((empty($temp_res_data["required"])) && (mb_strpos($value, "【所要時間】:") !== false)){
                         $temp_res_data["required"] = trim(mb_substr($value, mb_strpos($value, "【所要時間】:") + mb_strlen("【所要時間】:")));
+                    }else{
+                        $temp_res_data["required"] = "";
                     }
-                    if((empty($temp_res_data["guest_name"])) && (mb_strpos($value, "【MTG相手】:") !== false)){
-                        $temp_res_data["guest_name"] = mb_substr($value, mb_strpos($value, "【MTG相手】:") + mb_strlen("【MTG相手】:"));
+                    if((empty($temp_res_data["guest_name"])) && (mb_strpos($value, "【MTG相手_名前】:") !== false)){
+                        $temp_res_data["guest_name"] = mb_substr($value, mb_strpos($value, "【MTG相手_名前】:") + mb_strlen("【MTG相手_名前】:"));
+                    }else{
+                        $temp_res_data["guest_name"] = "";
+                    }
+                    if((empty($temp_res_data["guest_mail"])) && (mb_strpos($value, "【MTG相手_メールアドレス】:") !== false)){
+                        $temp_res_data["guest_mail"] = mb_substr($value, mb_strpos($value, "【MTG相手_メールアドレス】:") + mb_strlen("【MTG相手_メールアドレス】:"));
+                    }else{
+                        $temp_res_data["guest_mail"] = "";
                     }
                     if((empty($temp_res_data["mtg_type"])) && (mb_strpos($value, "【MTG形式】:") !== false)){
                         $temp_res_data["mtg_type"] = mb_substr($value, mb_strpos($value, "【MTG形式】:") + mb_strlen("【MTG形式】:"));
+                    }else{
+                        $temp_res_data["mtg_type"] = "";
                     }
                     if((empty($temp_res_data["mtg_place"])) && (mb_strpos($value, "【MTG場所】:") !== false)){
                         $temp_res_data["mtg_place"] = mb_substr($value, mb_strpos($value, "【MTG場所】:") + mb_strlen("【MTG場所】:"));
+                    }else{
+                        $temp_res_data["mtg_place"] = "";
                     }
                     if((empty($temp_res_data["mtg_tel_no"])) && (mb_strpos($value, "【電話番号】:") !== false)){
                         $temp_res_data["mtg_tel_no"] = mb_substr($value, mb_strpos($value, "【電話番号】:") + mb_strlen("【電話番号】:"));
+                    }else{
+                        $temp_res_data["mtg_tel_no"] = "";
                     }
                     if((empty($temp_res_data["mtg_skype_id"])) && (mb_strpos($value, "【SKYPE ID】:") !== false)){
                         $temp_res_data["mtg_skype_id"] = mb_substr($value, mb_strpos($value, "【SKYPE ID】:") + mb_strlen("【SKYPE ID】:"));
+                    }else{
+                        $temp_res_data["mtg_skype_id"] = "";
                     }
                 }
             }
