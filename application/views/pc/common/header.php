@@ -19,9 +19,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta property="og:title" content="">
     <meta property="og:description" content="">
 
+    <link href="/JobCoordinator/css/vendor/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/JobCoordinator/css/vendor/bootstrap/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css">
     <link href="/JobCoordinator/css/common.css" rel="stylesheet" type="text/css">
     <script src="/JobCoordinator/js/jquery-3.2.1.min.js"></script>
+    <script src="/JobCoordinator/js/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="/JobCoordinator/js/vendor/bootstrap/bootstrap-datepicker.min.js"></script>
+    <script src="/JobCoordinator/js/vendor/bootstrap/locales/bootstrap-datepicker.ja.min.js"></script>
     <script src="/JobCoordinator/js/common.js"></script>
+    
+<script>
+$(function(){
+    $('#datepicker-daterange .input-daterange').datepicker({
+        language: 'ja',
+        format: "yyyy年mm月dd日",
+        maxViewMode: 2,
+        todayBtn: "linked",
+        clearBtn: true,
+        todayHighlight: true
+    });
+});
+$(function(){
+    //Default
+    $('#datepicker-default .date').datepicker({
+        format: "yyyy年mm月dd日",
+        startView: 1,
+        minViewMode: 1,
+        maxViewMode: 2,
+        clearBtn: true,
+        language: "ja",
+        todayHighlight: true
+    });
+    
+});
+</script>
+    
 </head>
 <body>
     <div id='header'>
